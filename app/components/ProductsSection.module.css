@@ -1,0 +1,309 @@
+/* Container & Layout */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+.header .section-label { 
+  justify-content: center; 
+}
+
+.filters {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--space-2xl);
+}
+.filterBtn {
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--glass-border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.filterBtn:hover { 
+  border-color: var(--color-primary); 
+  color: var(--color-primary); 
+}
+.filterBtn.active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-color: transparent;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: var(--space-xl);
+}
+
+/* Card Main Container */
+.card {
+  position: relative;
+  background: #2a2a2a;
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+  border-radius: 16px;
+  overflow: hidden;
+  height: 460px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.card:hover { 
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Layer */
+.imgWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  background: #1e1e1e;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .img { 
+  transform: scale(1.05);
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light, #aaa);
+  font-size: var(--font-size-sm);
+  gap: var(--space-sm);
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 1;
+}
+
+.catTag {
+  display: none;
+}
+
+/* Slide-Up Overlay Content Area */
+.body {
+  position: relative;
+  z-index: 2;
+  background: #f9f9f9;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  margin: 0 2px 2px 2px;
+  
+  /* Initial State: Only Title Header is Visible */
+  transform: translateY(calc(100% - 3.6rem));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .body {
+  /* Hovered State: Drawer slides fully up */
+  transform: translateY(0);
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111111;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  line-height: 1.2;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  color: #555555;
+  line-height: 1.45;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease 0.05s;
+}
+
+.card:hover .tagline {
+  opacity: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+.featureItem i { 
+  color: var(--color-success, #10b981); 
+  font-size: 0.8rem; 
+}
+
+/* Bottom Action Area & Button */
+.actions {
+  margin-top: 0.5rem;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.25s ease 0.1s;
+}
+
+.card:hover .actions {
+  opacity: 1;
+}
+
+.exploreBtn {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: #0b0b0b;
+  color: #00f2a9;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.exploreBtn:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+}
+
+.exploreBtn:active {
+  transform: translateY(0);
+}
+
+.empty {
+  text-align: center;
+  padding: var(--space-3xl);
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  border: 2px dashed var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+
+/* Skeleton Loading Styles */
+.skeletonCard {
+  pointer-events: none;
+}
+
+.skeletonImg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s infinite;
+}
+
+.skeletonBadge,
+.skeletonCatTag,
+.skeletonTitle,
+.skeletonTagline,
+.skeletonFeature,
+.skeletonBtn {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeletonBadge { width: 80px; height: 24px; position: absolute; top: 16px; right: 16px; }
+.skeletonCatTag { width: 90px; height: 22px; position: absolute; bottom: 16px; left: 16px; }
+.skeletonTitle { height: 28px; width: 85%; margin-bottom: 12px; }
+.skeletonTagline { height: 18px; width: 70%; margin-bottom: 20px; }
+.skeletonFeature { height: 20px; width: 92%; margin-bottom: 10px; }
+.skeletonActions { display: flex; gap: 12px; margin-top: 20px; }
+.skeletonBtn { height: 42px; flex: 1; border-radius: 6px; }
+
+@keyframes skeletonLoading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Animations */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.5s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .grid { gap: var(--space-lg); }
+  .card { height: 400px; }
+}
+
+/* Touch devices can't hover — show the title strip only, the whole card is tappable */
+@media (hover: none) {
+  .body { transform: none; }
+  .tagline,
+  .actions { display: none; }
+}
+
+/* Mobile: always two columns */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+  .card {
+    height: auto;
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+  }
+  .body {
+    transform: none;
+    padding: 0.6rem 0.7rem;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+  }
+  .name {
+    font-size: 0.85rem;
+    line-height: 1.25;
+  }
+  .tagline,
+  .actions { display: none; }
+}

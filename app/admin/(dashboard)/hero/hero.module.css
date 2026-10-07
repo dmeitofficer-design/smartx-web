@@ -1,0 +1,86 @@
+/* Background type selector */
+.bgTypeRow {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+.bgTypeBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--glass-border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.bgTypeBtn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.bgTypeBtnActive {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-color: transparent;
+  color: #fff;
+}
+
+/* CE Badge preview pill */
+.cePreview {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: rgba(255,255,255,0.95);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.2rem;
+  box-shadow: var(--shadow-md);
+  color: #0f172a;
+}
+
+/* Badge editor row: fields left, icon + remove right */
+.badgeEditorRow {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: var(--space-xl);
+  align-items: start;
+  padding: var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+.badgeEditorFields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.badgeEditorRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* CTA grid */
+.ctaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* Stats */
+.statsList { display: flex; flex-direction: column; gap: var(--space-md); }
+.statRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 700px) {
+  .ctaGrid         { grid-template-columns: 1fr; }
+  .badgeEditorRow  { grid-template-columns: 1fr; }
+}

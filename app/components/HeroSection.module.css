@@ -1,0 +1,580 @@
+/* ─────────────────────────────────────────
+   HERO SECTION – Full Bleed Slider
+   ───────────────────────────────────────── */
+
+.section {
+  position: relative;
+
+  overflow-x: clip;   /* clips horizontal bleed artifacts without blocking the vw escape */
+  overflow-y: visible;
+  width: 100%;
+}
+
+/* Background */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Blobs */
+.blob1, .blob2, .blob3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  animation: blobDrift 14s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.blob1 { width: 600px; height: 600px; background: rgba(var(--color-primary-rgb), 0.12); top: -200px; left: -150px; }
+.blob2 { width: 400px; height: 400px; background: rgba(99, 102, 241, 0.10); bottom: -100px; right: 20%; animation-delay: -5s; }
+.blob3 { width: 300px; height: 300px; background: rgba(6, 182, 212, 0.08); top: 20%; right: -100px; animation-delay: -9s; }
+
+@keyframes blobDrift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, 25px) scale(1.08); }
+}
+
+/* ── Full-bleed image section — escapes any parent padding/max-width ── */
+.imageSection {
+  position: relative;
+  z-index: 1;
+  /* Escape parent container padding and max-width */
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  /* Push down exactly the navbar height */
+
+  height: clamp(1040px, 90vh,87vh);
+  overflow:visible;
+  flex-shrink: 0;
+}
+
+/* Content Container */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
+  width: 100%;
+}
+
+/* ==================== FULL BLEED SLIDER ==================== */
+.heroSlider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+
+.heroSlider.dragging {
+  cursor: grabbing;
+}
+
+.sliderTrack {
+  display: flex;
+
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+  will-change: transform;
+}
+
+.sliderTrack.noanim {
+  transition: none;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.sliderImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+}
+
+/* ── Multiple Floating Badges Container ── */
+.floatingBadgesContainer {
+  position: relative;
+  bottom: 10%;
+  left: 0;
+  justify-content: flex-start;
+  display: flex;
+  gap: 14px;
+  z-index: 18;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.floatBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(2px);
+  border-radius: 8px;
+  padding: 0.25rem .5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  color: white;
+  white-space: nowrap;
+ 
+  transition: transform 0.3s ease;
+}
+
+.floatBadge:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+.floatBadge:nth-child(2) { animation-delay: 0.8s; }
+.floatBadge:nth-child(3) { animation-delay: 0.16s; }
+.floatBadge:nth-child(4) { animation-delay: 1.2s; }
+
+@keyframes badgeFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-28px); }
+}
+
+/* Placeholder */
+.placeholderWrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--text-light);
+  font-size: var(--font-size-sm);
+  opacity: 0.6;
+}
+
+/* Dots */
+.sliderDots {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 9px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 20;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.activeDot {
+  background: var(--color-accent);
+  transform: scale(1.4);
+}
+
+/* Text Section */
+.textSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* Top badge pill */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(var(--color-primary-rgb), 0.12);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.28);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(68, 69, 85);
+  margin-bottom: var(--space-lg);
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* Headline */
+.headline {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  font-size: var(--font-size-lg);
+  color: var(--sub-text);
+  line-height: 1.8;
+  margin-bottom: var(--space-xl);
+  max-width: 90dvw;
+}
+
+/* CTAs */
+.ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--space-2xl);
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: var(--space-xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-primary), var(--text));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Scroll hint */
+.scrollHint {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(154, 165, 175);
+  font-size: 1rem;
+  z-index: 2;
+    animation: bounce 2s infinite;
+}
+/* ── Product Overlay Container ── */
+.productOverlay {
+  position: absolute;
+  bottom: 35%;
+  left: 3rem;
+  z-index: 25;
+  pointer-events: auto;
+}
+
+/* Glassmorphism Card Styling for Desktop & Mobile */
+.productDetailsBox {
+ 
+  backdrop-filter: blur(10px) ;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background: rgba(0, 0, 0, 0.233);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+  padding: 1.5rem 1.75rem !important;
+  border-radius: 10px !important;
+
+
+  max-width: 50dvw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.productModel {
+  font-family: 'poppins';
+   font-size: clamp(2rem, 8rem - 8cqw, 4.75rem) !important;
+  font-weight: 800 !important;
+  color: #fafafa !important;
+  line-height: 1.2;
+}
+
+.productTagline {
+  font-size: 0.95rem !important;
+  color: #c5c5c5 !important;
+  margin: 0 !important;
+  line-height: 1.4;
+}
+
+.productLink {
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #00a8ff;
+  color: #ffffff !important;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  width: fit-content;
+  margin-top: 0.5rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.productLink:hover {
+  background: #0088ff;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustment for Mobile screens */
+
+/* ── Responsive ─────────────────────────── */
+@media (max-width: 2324px) {
+  .imageSection {
+    height: clamp(320px, 90vh, 90vh); /* Slightly increased mobile base height */
+  }
+  .sliderImg {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+display: block;
+}
+.slide {
+flex: 0 0 100%;
+width: 100%;
+height: 100%;
+overflow: hidden;
+} 
+}
+@media (max-width: 1524px) {
+  .imageSection {
+    height: clamp(320px, 90vh, 90vh); /* Slightly increased mobile base height */
+  }
+  .sliderImg {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+display: block;
+}
+.slide {
+flex: 0 0 100%;
+width: 100%;
+height: 100%;
+overflow: hidden;
+} 
+}
+
+@media (max-width: 640px) {
+   .productOverlay {
+    top: auto;
+    bottom: 1.5rem;
+    right: 1rem;
+    display: flex ;
+    display: flex;
+    
+    justify-content: flex-end;
+  }
+  
+  .productDetailsBox {
+    max-width: fit-content;
+    height: fit-content;
+    background: #3d3d3d3d;
+    backdrop-filter: blur(0px);
+    padding: .3rem .5rem !important;
+    gap: 0px  ;
+  }
+.productTagline{
+  display: none;
+}
+.productLink{
+  min-width: 20dvw;
+  width: fit-content;
+  font-size: .5rem;
+  margin: 0px;
+  background-color: transparent;
+  padding: var(--space-sm);
+  border-radius: var(--space-sm);
+}
+  .productModel {
+    font-size: .7rem !important;
+  }
+  .content{
+    gap: var(--space-sm);
+    padding: 0px;
+  }
+  .imageSection {
+    /* Set specific dimensions for mobile slider like the image */
+    height: 180px; 
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    
+    /* Center text above slider like in image */
+    margin-top:var(--space-sm) ;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .section{
+    height: 76vh;
+    min-height: 80%;
+  }
+  .bg{
+height: 78vh;
+top:-2%;
+  }
+  .bgImg{
+    width: 90%;
+  }
+.heroSlider {
+  touch-action: manipulation;
+}
+.sliderImg {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+display: block;
+}
+.slide {
+flex: 0 0 100%;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+
+  .sliderDots {
+    /* Positions dots clearly inside the dark overlay space at the very bottom */
+ position: relative;
+    padding: 4px 10px;
+    gap: 6px;
+    width: fit-content;
+
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .floatBadge { 
+    display: none; 
+  }
+  
+  /* Hiding the subtext is fine, but let's fix the layout mapping below it */
+  .sub { 
+    display: none; 
+  }
+
+  /* Smooth out text scaling so headline doesn't crowd the slider */
+  .headline {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-top: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+  }
+
+  .ctas {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: var(--space-lg);
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+  
+
+  .stats {
+    gap: 16px;
+    padding-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Clean 2x2 grid instead of uneven wrapping */
+    justify-items: center;
+  }
+
+  .statLabel { 
+    font-size: 0.65rem; 
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.3rem;
+    margin-bottom: var(--space-sm);
+  }
+  .scrollHint{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    bottom: 0;
+    align-items: center;
+
+  }
+  
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out; /* Slows down near the floor */
+  }
+  50% {
+    transform: translateY(-30px);       /* Peak height of the bounce */
+    animation-timing-function: ease-in;  /* Accelerates toward the floor */
+  }
+}

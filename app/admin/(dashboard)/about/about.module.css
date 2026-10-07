@@ -1,0 +1,23 @@
+.mvGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.hlGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.hlCard {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+@media (max-width: 700px) {
+  .mvGrid { grid-template-columns: 1fr; }
+  .hlGrid { grid-template-columns: 1fr; }
+}

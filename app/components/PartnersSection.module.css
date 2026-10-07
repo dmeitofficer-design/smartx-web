@@ -1,0 +1,165 @@
+.partnersSection {
+  padding: 3rem 0 2.5rem;
+  background: var(--overlay-muted);
+  border-top: 1px solid #f1f1f1;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+}
+
+.heading {
+  font-size: 2.75rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1f2937;
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+}
+
+.viewportWrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gridViewport {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.dragging .logoLinkWrapper {
+  will-change: transform;
+}
+
+.fadeLeft,
+.fadeRight,
+.fadeTop,
+.fadeBottom {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+.fadeLeft {
+  top: 0; left: 0; bottom: 0;
+  width: 80px;
+  background: linear-gradient(to right,
+    var(--overlay-muted, #f9fafb) 0%,
+    transparent 100%
+  );
+}
+.fadeRight {
+  top: 0; right: 0; bottom: 0;
+  width: 80px;
+  background: linear-gradient(to left,
+    var(--overlay-muted, #f9fafb) 0%,
+    transparent 100%
+  );
+}
+.fadeTop {
+  top: 0; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom,
+    var(--overlay-muted, #f9fafb) 0%,
+    transparent 100%
+  );
+}
+.fadeBottom {
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to top,
+    var(--overlay-muted, #f9fafb) 0%,
+    transparent 100%
+  );
+}
+
+.logoCard {
+  background: var(--card-bg, #fff);
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  box-sizing: border-box;
+}
+.logoCard:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+  border-color: #3b82f6;
+}
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0.88;
+  transition: opacity 0.2s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+.logoCard:hover .logo { opacity: 1; }
+
+.logoLinkWrapper {
+  display: block;
+  text-decoration: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.empty { text-align: center; color: #6b7280; margin-bottom: 1rem; }
+
+/* ── Mobile static grid ─────────────────────────────────────────────────── */
+.mobileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+  padding: 1rem 0;
+}
+
+.mobileGrid .logoLinkWrapper {
+  position: static;
+}
+
+.mobileGrid .logoCard {
+  width: 100%;
+  height: 90px;
+  padding: 0.75rem;
+}
+
+/* ── Mobile breakpoints ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .partnersSection { padding: 2rem 0 1.5rem; }
+  .inner { padding: 0 1rem; }
+  .heading { font-size: 1.4rem; margin-top: 1rem; }
+  .gridViewport { height: 220px; }
+  .fadeLeft, .fadeRight { width: 48px; }
+  .fadeTop,  .fadeBottom { height: 28px; }
+}
+
+@media (max-width: 480px) {
+  .mobileGrid {
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+    gap: 8px;
+  }
+  .mobileGrid .logoCard {
+    height: 75px;
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+}

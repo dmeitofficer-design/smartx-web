@@ -1,0 +1,21 @@
+.ctaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.statsList { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.statRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 600px) {
+  .ctaGrid { grid-template-columns: 1fr; }
+}

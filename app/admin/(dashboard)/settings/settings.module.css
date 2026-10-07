@@ -1,0 +1,86 @@
+.tabs {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: var(--space-md);
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+.tab:hover { color: var(--color-primary); background: rgba(var(--color-primary-rgb), 0.06); }
+.tab.activeTab {
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.15), rgba(var(--color-primary-rgb), 0.08));
+  color: var(--color-primary);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+}
+
+.presets {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.preset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+.preset:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.colorGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.colorRow {}
+.colorPicker {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--glass-border);
+  cursor: pointer;
+  padding: 2px;
+  background: none;
+  flex-shrink: 0;
+}
+
+.navList { display: flex; flex-direction: column; gap: var(--space-md); }
+.navRow {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 700px) {
+  .tabs { gap: 4px; }
+  .tab { padding: 0.4rem 0.7rem; font-size: 0.78rem; }
+}

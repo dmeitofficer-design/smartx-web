@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export PATH=/usr/local/bin:$PATH
+    - cd /home/aexonhealthcare/repositories/dme-cms
+    - npm install
+    - npm run build

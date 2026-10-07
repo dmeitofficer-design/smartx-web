@@ -1,0 +1,437 @@
+.hero { 
+  min-height: 10vh;
+  background: var(--product-section-bg); }
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+   min-height: 10vh;
+}
+.section{
+  min-height: 20vh!important;
+}
+.imgCol { min-width: 0; }
+.imgWrap {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--text-muted);
+  
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 520px;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  /* 🟢 FIX: Contain forces images to scale inside the 4:3 box without changing its size */
+  object-fit: contain; 
+  padding: var(--space-md);
+  transition: opacity 0.2s ease-in-out;
+  
+}
+.placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-sm); color: var(--text-light); font-size: var(--font-size-sm);
+}
+.badge {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+}
+
+.featureList {
+   min-height: 10vh;
+    display: flex; flex-direction: column; gap: var(--space-md); margin-bottom: var(--space-xl); }
+.featureItem { display: flex; align-items: flex-start; gap: var(--space-md); }
+.featureCheck {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.15);
+  color: var(--color-success);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ctas { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-lg); 
+justify-content: space-between;
+
+}
+
+.trustBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.65rem 1rem;
+  background: rgba(16,185,129,0.06);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: var(--radius-md);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--space-sm);
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+}
+.tab {
+  padding: 0.65rem 1.25rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+.tab:hover { color: var(--color-primary); }
+.tab.activeTab { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+
+.tabContent {}
+
+.featuresGrid {
+   min-height: 10vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: var(--space-lg);
+}
+.featureCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--glass-bg);
+ 
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+.featureCardIcon {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.specsTable {
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-width: 780px;
+}
+.specRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 0.85rem var(--space-lg);
+  border-bottom: 1px solid var(--glass-border);
+}
+.specRow:last-child { border-bottom: none; }
+.specRow.even { background: rgba(var(--color-primary-rgb), 0.025); }
+.specLabel { font-weight: 600; font-size: var(--font-size-sm); color: var(--text-muted); }
+.specValue { font-size: var(--font-size-sm); color: var(--text); overflow-wrap: anywhere; }
+
+.overview { max-width: 760px; }
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  gap: var(--space-lg);
+}
+.relatedCard {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.relatedCard:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(var(--color-primary-rgb),0.12); }
+.relatedImg {
+  height: 160px;
+  overflow: hidden;
+  background: rgba(var(--color-primary-rgb),0.04);
+}
+.relatedImg img { width: 100%; height: 100%; object-fit: contain; padding: var(--space-md); }
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  z-index: 1001;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.skeletonText {
+  background: #e0e0e0;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeletonHeading {
+  background: #e0e0e0;
+  border-radius: 6px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeletonImage {
+  background: #e0e0e0;
+  animation: pulse 1.5s infinite;
+  height: 100%;
+}
+
+.skeletonButton {
+  background: #e0e0e0;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeletonTab {
+  width: 110px;
+  height: 42px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  animation: pulse 1.5s infinite;
+}
+.breadcrumbs {
+  background: transparent;
+  border-bottom: 1px solid var(--glass-border);
+  padding: 0.75rem 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  width: 100%;
+}
+
+/* 🟢 NEW: Product Dynamic Carousel & Lightbox Modules Styles */
+
+.galleryRow {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.thumbWrap {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(var(--color-primary-rgb), 0.02);
+  padding: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.thumbWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.thumbWrap:hover {
+  border-color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.activeThumb {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+  background: var(--bg);
+}
+
+/* Lightbox Immersive Fullscreen Framework */
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.425);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* 🟢 REMOVE or bypass any dependency on general modal layout rules */
+
+.lightboxContent {
+  position: relative;
+  width: 90vw;       /* 🚀 Expand container to 90% of screen width */
+  max-width: 1100px; /* 🚀 Allow high-res equipment details to look crisp */
+  height: auto;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightboxImage {
+  width: 90vw;
+  HEIGHT:70VH;
+
+  max-width: 100%;
+  max-height: 80vh;  /* 🚀 Ensure it stays within view bounds vertically */
+  object-fit: contain; /* 🚀 Keep strict native aspect-ratio proportions */
+  border-radius: var(--radius-md);
+ 
+  background: transparent; /* Ensures no awkward blocks behind transparent pngs */
+ 
+}
+
+.lightboxClose {
+  position: absolute;
+  top: var(--space-3xl);
+  right: var(--space-xl);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.lightboxClose:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.lightboxNavPrev, .lightboxNavNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(73, 68, 68, 0.452);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  transition: all 0.2s ease;
+}
+.lightboxNavPrev:hover, .lightboxNavNext:hover {
+  background: rgba(32, 30, 30, 0.562);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.lightboxNavPrev { left: var(--space-xl); }
+.lightboxNavNext { right: var(--space-xl); }
+
+.lightboxCounter {
+  margin-top: var(--space-md);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.329);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .thumbWrap {
+    height: 60px;
+    width: 60px;
+  }
+  .lightboxImage {
+    height: 60vh;
+    width: 90vw;
+  }
+  .lightboxNavPrev { left: var(--space-sm); }
+  .lightboxNavNext { right: var(--space-sm); }
+  .lightboxNavPrev, .lightboxNavNext { width: 40px; height: 40px; font-size: 1rem; }
+  .lightboxClose { top: 7dvh; right: var(--space-md); width: 38px; height: 38px; }
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab { white-space: nowrap; padding: 0.6rem 0.9rem; }
+  .specRow {
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-sm);
+    padding: 0.7rem var(--space-md);
+  }
+}
+@keyframes pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+/* Mobile: two columns for related products, buttons in a 2-up grid */
+@media (max-width: 560px) {
+  .heroGrid { gap: var(--space-md); }
+  .imgWrap { aspect-ratio: 1 / 1; }
+  .heroImg { padding: var(--space-sm); }
+  .ctas {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .ctas :global(.btn) {
+    width: 100%;
+    justify-content: center;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.8rem !important;
+  }
+  .featureCard { padding: 0.75rem; }
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+  .relatedImg { height: 120px; }
+  .relatedImg img { padding: var(--space-sm); }
+}
