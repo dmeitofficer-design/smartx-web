@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
     title: `${product.name} - DRGEM Medical Imaging Bangladesh`,
     description: product.description?.substring(0, 160) || `Buy ${product.name} from official DRGEM distributor in Bangladesh.`,
     alternates: {
-      canonical: `https://www.smartxbdlimited.com/products/${category}/${slug}`,
+      canonical: `https://www.smartxlimited.com/products/${category}/${slug}`,
     },
   };
 }

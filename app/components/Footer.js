@@ -8,7 +8,7 @@ export default function Footer({ settings = {}, products = [] }) {
   const year = new Date().getFullYear();
   const name = settings.siteName || 'SmartX Technology Limited';
   const tagline = settings.siteTagline || 'Medical imaging equipment, installation and support in Bangladesh.';
-  const email = settings.email || 'info@smartxbdlimited.com';
+  const email = settings.email || 'info@smartxlimited.com';
   const phone = settings.phone || '+880-XXX-XXXXX';
   const address = settings.address || 'Dhaka, Bangladesh';
   const logoImage = settings.logoImagef || '';

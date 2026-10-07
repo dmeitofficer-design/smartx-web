@@ -15,7 +15,7 @@ const slugifyCategory = (category) => {
 };
 
 export default async function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartxbdlimited.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartxlimited.com';
 
   let productUrls = [];
 

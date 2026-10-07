@@ -252,7 +252,7 @@ const SETTINGS_DATA = {
   fontHeading: "'Cal Sans', 'Inter', sans-serif",
   fontBody: "'Inter', sans-serif",
   phone: '+880-2-XXXXXXX',
-  email: 'info@smartxbdlimited.com',
+  email: 'info@smartxlimited.com',
   address: 'House XX, Road XX, Gulshan-2, Dhaka 1212, Bangladesh',
   whatsapp: '',
   facebook: '',

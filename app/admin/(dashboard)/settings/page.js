@@ -333,7 +333,7 @@ export default function AdminSettingsPage() {
               </div>
               <div className="form-group">
                 <label>Email</label>
-                <input className="form-input" value={data.email || ''} onChange={e => set('email', e.target.value)} placeholder="info@smartxbdlimited.com" />
+                <input className="form-input" value={data.email || ''} onChange={e => set('email', e.target.value)} placeholder="info@smartxlimited.com" />
               </div>
               <div className="form-group">
                 <label>LinkedIN</label>

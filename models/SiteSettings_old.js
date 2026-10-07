@@ -18,7 +18,7 @@ const SiteSettingsSchema = new mongoose.Schema({
 
   // Contact Info
   phone:           { type: String, default: '+880-XXX-XXXXX' },
-  email:           { type: String, default: 'info@smartxbdlimited.com' },
+  email:           { type: String, default: 'info@smartxlimited.com' },
   address:         { type: String, default: 'Dhaka, Bangladesh' },
   whatsapp:        { type: String, default: '' },
 

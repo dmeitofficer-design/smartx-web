@@ -27,7 +27,7 @@ export default function ContactSection({ settings = {} }) {
     }
   };
 
-  const email    = settings.email    || 'info@smartxbdlimited.com';
+  const email    = settings.email    || 'info@smartxlimited.com';
   const phone    = settings.phone    || '+880-XXX-XXXXX';
   const address  = settings.address  || 'Dhaka, Bangladesh';
   const whatsapp = settings.whatsapp || '';

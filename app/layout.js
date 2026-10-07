@@ -103,7 +103,7 @@ export async function generateMetadata() {
   const s = await getSettings();
   const siteName = s.siteName || 'SmartX Technology Limited';
   const description = s.siteTagline || 'Exclusive distributor of DRGEM medical imaging equipment in Bangladesh.';
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartxbdlimited.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartxlimited.com';
 
   return {
     metadataBase: new URL(siteUrl),
@@ -181,8 +181,8 @@ export default async function RootLayout({ children }) {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
     name: s.siteName || 'SmartX Technology Limited',
-    url: 'https://smartxbdlimited.com',
-    logo: s.logoImage || 'https://smartxbdlimited.com/icon.png',
+    url: 'https://smartxlimited.com',
+    logo: s.logoImage || 'https://smartxlimited.com/icon.png',
     description: s.siteTagline || 'Exclusive distributor of DRGEM medical imaging equipment in Bangladesh.',
     address: {
       '@type': 'PostalAddress',

@@ -12,7 +12,7 @@ function generateSecureScanLink(employeeId = '') {
   // Dynamic network selection for local testing vs live server environment
   const domain = process.env.NODE_ENV === 'development'
     ? 'http://192.168.1.225:3000'
-    : 'https://smartxbdlimited.com';
+    : 'https://smartxlimited.com';
     
   // 🟢 ADJUSTED TO 12 CHARACTERS: Maximum QR code compactness with enterprise-grade security
   const hash = crypto.createHmac('sha256', SCAN_SECRET)

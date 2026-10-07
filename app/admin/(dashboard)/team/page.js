@@ -32,7 +32,7 @@ function MemberForm({ initial, onSave, onCancel, saving }) {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)' }}>
                 <div className="form-group">
                   <label>Email</label>
-                  <input className="form-input" type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="member@smartxbdlimited.com" />
+                  <input className="form-input" type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="member@smartxlimited.com" />
                 </div>
                 <div className="form-group">
                   <label>Phone (direct)</label>

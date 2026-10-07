@@ -14,12 +14,12 @@ const nextConfig: NextConfig = {
       // Local server / VPS uploads domain (if serving media from production domain)
       {
         protocol: 'https',
-        hostname: 'smartxbdlimited.com',
+        hostname: 'smartxlimited.com',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'www.smartxbdlimited.com',
+        hostname: 'www.smartxlimited.com',
         pathname: '/**',
       },
     ],
