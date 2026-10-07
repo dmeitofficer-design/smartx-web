@@ -7,9 +7,9 @@ module.exports = {
       name: 'smartx-web',
       cwd: __dirname,
       script: 'node_modules/next/dist/bin/next',
-      // dme-cms already uses 3000 on this VPS, so SmartX runs on 3001.
-      // Bound to localhost only — the web server (nginx) is the public entry point.
-      args: 'start -p 3001 -H 127.0.0.1',
+      // Ports on the WHM server: 3001 = dmebd-nextjs, 3002 = dme-business-card → SmartX uses 3003.
+      // Bound to localhost only — Apache (userdata proxy include) is the public entry point.
+      args: 'start -p 3003 -H 127.0.0.1',
       env: {
         NODE_ENV: 'production',
       },
