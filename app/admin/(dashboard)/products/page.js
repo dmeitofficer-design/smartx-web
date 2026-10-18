@@ -4,7 +4,7 @@ import ImageUpload from '@/app/components/ImageUpload';
 import ToastContainer, { useToast } from '@/app/components/Toast';
 import styles from './products.module.css';
 
-const CATEGORIES = ['X-Ray Systems', 'Mobile X-ray', 'Ultrasound', 'Imaging Software','C-Arm', 'Accessories','FPD','BMD','OPG','Printer'];
+const CATEGORIES = ['X-Ray Systems', 'Mobile X-ray', 'Ultrasound', 'Imaging Software','C-Arm', 'Accessories','FPD','BMD','OPG','Printer','Patient Monitor','ECG','Endoscopy','Surgical Lights','Dental Chair','Ventilator','Suction Machine','Hematology Analyzer'];
 const BADGES = ['', 'New', 'Bestseller', 'Featured', 'Limited'];
 
 const EMPTY_PRODUCT = {
