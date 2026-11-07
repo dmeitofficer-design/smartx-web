@@ -42,3 +42,7 @@ next-env.d.ts
 iphone-bug-check.png
 server.js
 test-iphone.spec.js
+
+# Python bytecode (from skill scripts)
+__pycache__/
+*.pyc
