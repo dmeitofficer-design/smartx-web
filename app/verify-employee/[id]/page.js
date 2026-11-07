@@ -18,8 +18,8 @@ export default async function VerifyEmployeePublicPage({ params, searchParams })
     return (
       <div className={styles.unauthorizedContainer}>
         <div className={styles.alertIcon}>⚠️</div>
-        <h2>Access Violation: Manual Entry Blocked</h2>
-        <p>This verification node requires an authentic physical hardware scan telemetry token. Manual domain string entries are restricted.</p>
+        <h2>Scan Required</h2>
+        <p>This page only opens by scanning the QR code on an employee&apos;s ID. Typed-in links are not accepted.</p>
       </div>
     );
   }
@@ -37,8 +37,8 @@ export default async function VerifyEmployeePublicPage({ params, searchParams })
     return (
       <div className={styles.unauthorizedContainer}>
         <div className={styles.alertIcon}>❌</div>
-        <h2>Invalid Security Signature</h2>
-        <p>The cryptographic verification signature provided is corrupt or has expired.</p>
+        <h2>Invalid Verification Code</h2>
+        <p>The verification code in this link is invalid. Scan the QR code again.</p>
       </div>
     );
   }
@@ -87,8 +87,8 @@ ipAddress = ipAddress.split(',')[0].trim();
     return (
       <div className={styles.unauthorizedContainer}>
         <div className={styles.alertIcon}>🔍</div>
-        <h2>Profile Record Missing</h2>
-        <p>No active entry matches the validated identifier: "{cleanId}"</p>
+        <h2>Employee Not Found</h2>
+        <p>No employee record matches ID &quot;{cleanId}&quot;.</p>
       </div>
     );
   }
@@ -135,7 +135,7 @@ ipAddress = ipAddress.split(',')[0].trim();
         </div>
 
         <div className={styles.badgeFooter}>
-          SmartX Technology Limited (SmartX) Verification Node
+          SmartX Technology Limited — Employee Verification
         </div>
       </div>
     </div>

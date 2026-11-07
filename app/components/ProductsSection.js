@@ -119,7 +119,7 @@ const handleExploreCategory = (catSlug) => {
             Our <span className="gradient-text">Medical Imaging</span> Solutions
           </h2>
           <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.8 }}>
-            Comprehensive diagnostic imaging equipment designed for clinical excellence. Select a division below to browse specialized equipment catalogs.
+            Select a category below to browse our diagnostic imaging equipment.
           </p>
         </div>
 

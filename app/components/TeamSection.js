@@ -29,7 +29,7 @@ export default function TeamSection({ team = [] }) {
             Meet the <span className="gradient-text">People Behind SmartX</span>
           </h2>
           <p style={{ color: 'var(--text-muted)', maxWidth: '520px', margin: '0 auto' }}>
-            A dedicated team of medical imaging specialists and engineers committed to delivering excellence.
+            The medical imaging specialists and engineers who install, calibrate and support the equipment we supply.
           </p>
         </motion.div>
 

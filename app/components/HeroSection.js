@@ -246,7 +246,7 @@ function HeroSlider({ heroImages = [], globalBadges = [] }) {
 
 export default function HeroSection({ hero = {}, settings = {} }) {
   const {
-    headline          = 'Inovation in  Healthcare',
+    headline          = 'Innovation in Healthcare',
     subheadline       = 'Exclusive distributor of DRGEM medical imaging solutions in Bangladesh.',
     ctaLabel          = 'Explore Products',
     ctaHref           = '#products',
@@ -260,7 +260,7 @@ export default function HeroSection({ hero = {}, settings = {} }) {
     ceBadgeLabel      = 'CE Certified',
     ceBadgeSub        = 'Medical Equipment',
     ceBadgeIcon       = '',
-    badge             = 'Smartx technology limited — Bangladesh',
+    badge             = 'SmartX Technology Limited — Bangladesh',
     stats             = [],
   } = hero;
 
