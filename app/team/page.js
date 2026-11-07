@@ -1,8 +1,15 @@
+import { pageMeta } from '@/lib/site';
 import { connectDB } from '@/lib/mongodb';
 import Team from '@/models/Team';
 import TeamSection from '../components/TeamSection'; // Adjust relative import based on your tree placement
 
 export const dynamic = 'force-dynamic';
+
+export const metadata = pageMeta({
+  title: 'Our Team',
+  description: 'Meet the SmartX medical imaging specialists and engineers who install, calibrate and support DRGEM equipment in Bangladesh.',
+  path: '/team',
+});
 
 const stringifyAndClean = (data) => {
   if (!data) return null;

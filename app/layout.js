@@ -1,3 +1,4 @@
+import { SITE_URL, DEFAULT_DESCRIPTION, absoluteUrl } from '@/lib/site';
 import './globals.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { connectDB } from '@/lib/mongodb';
@@ -103,7 +104,7 @@ export async function generateMetadata() {
   const s = await getSettings();
   const siteName = s.siteName || 'SmartX Technology Limited';
   const description = s.siteTagline || 'Exclusive distributor of DRGEM medical imaging equipment in Bangladesh.';
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartxlimited.com';
+  const siteUrl = SITE_URL;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -113,11 +114,6 @@ export async function generateMetadata() {
     },
     description: description,
     
-    // Automatically generates self-referencing canonical tag for EVERY page
-    alternates: {
-      canonical: './',
-    },
-
     // Ensures icon tags are explicitly declared in HTML head
     icons: {
       icon: '/icon.png',
@@ -181,9 +177,12 @@ export default async function RootLayout({ children }) {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
     name: s.siteName || 'SmartX Technology Limited',
-    url: 'https://smartxlimited.com',
-    logo: s.logoImage || 'https://smartxlimited.com/icon.png',
-    description: s.siteTagline || 'Exclusive distributor of DRGEM medical imaging equipment in Bangladesh.',
+    url: SITE_URL,
+    logo: absoluteUrl(s.logoImage) || `${SITE_URL}/icon.png`,
+    description: s.siteTagline || DEFAULT_DESCRIPTION,
+    email: s.email || 'info@smartxlimited.com',
+    parentOrganization: { '@type': 'Organization', name: 'DME Group' },
+    areaServed: { '@type': 'Country', name: 'Bangladesh' },
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'House# 15/L-8, Road# 4, Block# F, Banani',
@@ -202,7 +201,7 @@ export default async function RootLayout({ children }) {
         <style dangerouslySetInnerHTML={{ __html: cssOverride }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
         />
       </head>
       <body>

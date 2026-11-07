@@ -3,8 +3,26 @@ import Product from '@/models/Product';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ProductsClientView from './ProductsClientView';
+import { absoluteUrl, pageMeta, slugifyCategory } from '@/lib/site';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({ params }) {
+  const { category } = await params;
+  await connectDB();
+  const products = await Product.find({ published: true }).select('name category image').lean();
+  const inCategory = products.filter((p) => slugifyCategory(p.category) === category);
+  if (!inCategory.length) return {};
+
+  const name = inCategory[0].category;
+  const examples = inCategory.slice(0, 3).map((p) => p.name).join(', ');
+  return pageMeta({
+    title: `${name} - DRGEM Medical Imaging Bangladesh`,
+    description: `${name} from DRGEM, supplied, installed and serviced in Bangladesh by SmartX Technology Limited. Includes ${examples}.`,
+    path: `/products/${category}`,
+    image: inCategory.find((p) => absoluteUrl(p.image))?.image,
+  });
+}
 
 export default async function CategoryPage({ params }) {
   const { category } = await params;

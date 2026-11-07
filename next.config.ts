@@ -46,6 +46,9 @@ const nextConfig: NextConfig = {
         destination: '/products',
         permanent: true,
       },
+      // Alternate About URLs (permanent, so ranking signals consolidate on /about)
+      { source: '/about-us', destination: '/about', permanent: true },
+      { source: '/aboutus', destination: '/about', permanent: true },
     ];
   },
 };

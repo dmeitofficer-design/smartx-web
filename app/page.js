@@ -11,6 +11,9 @@ import PartnersSection from './components/PartnersSection';
 import ClientsSection from './components/ClientsSection';
 
 export const dynamic = 'force-dynamic';
+
+// Title falls back to the site name from the root layout.
+export const metadata = { alternates: { canonical: '/' } };
 export const revalidate = 30;
 
 // A robust helper to serialize MongoDB objects

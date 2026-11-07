@@ -42,7 +42,7 @@ export default function ClientsSection({ initialData = {} }) {
     <section className={styles.clientsSection}>
       <div className={styles.inner}>
         <div className={styles.clientsHeader}>
-          <h1>Trusted by 400+ clients</h1>
+          <h2>Trusted by 400+ clients</h2>
           <p>
             "Our clients are our top priority, and we are committed to
             providing them with the highest level of service."

@@ -3,6 +3,7 @@ import { connectDB } from '@/lib/mongodb';
 import Product from '@/models/Product';
 import { notFound } from 'next/navigation';
 import ProductDetailClient from './ProductDetailClient';
+import { SITE_URL, absoluteUrl, metaDescription, pageMeta, slugifyCategory } from '@/lib/site';
 
 export const dynamic = 'force-dynamic';
 export async function generateMetadata({ params }) {
@@ -11,14 +12,15 @@ export async function generateMetadata({ params }) {
   const product = await Product.findOne({ slug, published: true }).lean();
   if (!product) return {};
 
-  return {
+  return pageMeta({
     title: `${product.name} - DRGEM Medical Imaging Bangladesh`,
-    description: product.description?.substring(0, 160) || `Buy ${product.name} from official DRGEM distributor in Bangladesh.`,
-    alternates: {
-      canonical: `https://www.smartxlimited.com/products/${category}/${slug}`,
-    },
-  };
+    description: product.tagline || product.description || `Buy ${product.name} from the official DRGEM distributor in Bangladesh.`,
+    path: `/products/${slugifyCategory(product.category) || category}/${slug}`,
+    image: product.image,
+    imageAlt: product.name,
+  });
 }
+
 export default async function ProductDetailPage({ params }) {
   // Await params safely
   const resolvedParams = await params;
@@ -58,10 +60,47 @@ export default async function ProductDetailPage({ params }) {
   const sanitizedProduct = JSON.parse(JSON.stringify(product));
   const sanitizedRelated = JSON.parse(JSON.stringify(relatedProducts));
 
+  const catSlug = targetSlug(product.category);
+  const pageUrl = `${SITE_URL}/products/${catSlug}/${slug}`;
+  const images = [product.image, ...(product.gallery || [])].map(absoluteUrl).filter(Boolean);
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.name,
+      description: metaDescription(product.description || product.tagline, undefined, 5000),
+      url: pageUrl,
+      category: product.category,
+      brand: { '@type': 'Brand', name: 'DRGEM' },
+      ...(images.length && { image: images }),
+      ...(product.specifications?.length && {
+        additionalProperty: product.specifications
+          .filter((sp) => sp?.label && sp?.value)
+          .map((sp) => ({ '@type': 'PropertyValue', name: sp.label, value: sp.value })),
+      }),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE_URL}/products` },
+        { '@type': 'ListItem', position: 3, name: product.category, item: `${SITE_URL}/products/${catSlug}` },
+        { '@type': 'ListItem', position: 4, name: product.name, item: pageUrl },
+      ],
+    },
+  ];
+
   return (
-    <ProductDetailClient 
-      product={sanitizedProduct} 
-      related={sanitizedRelated} 
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
+      <ProductDetailClient 
+        product={sanitizedProduct} 
+        related={sanitizedRelated} 
+      />
+    </>
   );
 }

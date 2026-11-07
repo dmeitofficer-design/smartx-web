@@ -30,6 +30,12 @@
   margin-bottom: var(--space-2xl);
 }
 
+/* Was an <h1>; demoted to <h2> (one <h1> per page) — keep the h1 sizing. */
+.clientsHeader h2 { font-size: 2em; }
+@media (max-width: 768px) {
+  .clientsHeader h2 { font-size: var(--font-size-4xl); }
+}
+
 .gridViewport {
   position: relative;
   width: 100%;

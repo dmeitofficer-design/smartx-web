@@ -4,6 +4,11 @@ import { connectDB } from '@/lib/mongodb';
 import Employee from '@/models/Employee';
 import styles from './verify.module.css';
 
+export const metadata = {
+  title: 'Employee Verification',
+  robots: { index: false, follow: false },
+};
+
 const SCAN_SECRET = process.env.SCAN_SECRET || 'smartx_technology_token_secret_2026';
 
 export default async function VerifyEmployeePublicPage({ params, searchParams }) {

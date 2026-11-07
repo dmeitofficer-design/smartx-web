@@ -1,8 +1,15 @@
+import { pageMeta } from '@/lib/site';
 import { connectDB } from '@/lib/mongodb';
 import Product from '@/models/Product'; // Ensure your Product model is imported
 import ProductsSection from '../components/ProductsSection';// Adjust relative import based on your folder structure
 
 export const dynamic = 'force-dynamic';
+
+export const metadata = pageMeta({
+  title: 'Medical Imaging Products',
+  description: 'Browse DRGEM medical imaging equipment available in Bangladesh from SmartX Technology Limited, the exclusive distributor.',
+  path: '/products',
+});
 
 const stringifyAndClean = (data) => {
   if (!data) return null;
